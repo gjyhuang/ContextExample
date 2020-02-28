@@ -1,12 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import {Routes} from './Components/Routes';
+import ThemeContext from './Components/ThemeContext';
+import themeStyles from './Components/styles/themeStyles';
 import './App.css';
 
 function App() {
+  const [theme, setTheme] = React.useState("light");
   return (
     <div className="App">
-      <Routes/>
+      <ThemeContext.Provider value={{currTheme: theme, setCurrTheme: (themeName) => setTheme(themeName)}}>
+        <Routes/>
+      </ThemeContext.Provider>
     </div>
   );
 }
